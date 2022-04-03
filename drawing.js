@@ -1,3 +1,5 @@
+'use strict';
+
 var Ax
 var Ay
 var Bx
@@ -9,12 +11,13 @@ var B_coords
 var C_coords
 var width = window.innerWidth
 var height = window.innerHeight
+var ctx
 
 function setup() {
   var canvas = document.getElementById("myCanvas")
   canvas.width = width
   canvas.height = height
-  var ctx = canvas.getContext("2d");
+  ctx = canvas.getContext("2d");
   ctx.fillStyle = "#000076";
   ctx.fillRect(0, 0, width, height);
   ctx.beginPath();
@@ -97,9 +100,7 @@ function random_vertex() {
   }
 }
 
-
 [A_coords, B_coords, C_coords] = random_triangle();
-
 
 ctx = setup();
 place_dot(A_coords);
@@ -113,6 +114,3 @@ for (var i = 0; i < 20000; i++) {
   place_dot(new_coords);
   old_coords = new_coords
 }
-
-
-
