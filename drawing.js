@@ -1,5 +1,19 @@
+var Ax
+var Ay
+var Bx
+var By
+var Cx
+var Cy
+var A_coords
+var B_coords
+var C_coords
+var width = window.innerWidth
+var height = window.innerHeight
+
 function setup() {
   var canvas = document.getElementById("myCanvas")
+  canvas.width = width
+  canvas.height = height
   var ctx = canvas.getContext("2d");
   ctx.beginPath();
   ctx.moveTo(Ax, Ay);
@@ -11,12 +25,12 @@ function setup() {
 }
 
 function random_triangle() {
-  Ax = Math.random() * 1000
-  Ay = Math.random() * 1000
-  Bx = Math.random() * 1000
-  By = Math.random() * 1000
-  Cx = Math.random() * 1000
-  Cy = Math.random() * 1000
+  Ax = Math.random() * width
+  Ay = Math.random() * height
+  Bx = Math.random() * width
+  By = Math.random() * height
+  Cx = Math.random() * width
+  Cy = Math.random() * height
   return ([[Ax, Ay], [Bx, By], [Cx, Cy]])
 }
 
@@ -60,11 +74,11 @@ function is_inside(coords) {
 }
 
 function random_dot() {
-  let random_x = Math.floor(Math.random() * 1000)
-  let random_y = Math.floor(Math.random() * 1000)
+  let random_x = Math.floor(Math.random() * width)
+  let random_y = Math.floor(Math.random() * height)
   while (!is_inside([random_x, random_y])) {
-    random_x = Math.floor(Math.random() * 1000)
-    random_y = Math.floor(Math.random() * 1000)
+    random_x = Math.floor(Math.random() * width)
+    random_y = Math.floor(Math.random() * height)
   }
   place_dot([random_x, random_y]);
   return ([random_x, random_y]);
@@ -81,16 +95,8 @@ function random_vertex() {
   }
 }
 
-var Ax
-var Ay
-var Bx
-var By
-var Cx
-var Cy
-var A_coords
-var B_coords
-var C_coords
-var [A_coords, B_coords, C_coords] = random_triangle();
+
+[A_coords, B_coords, C_coords] = random_triangle();
 
 
 ctx = setup();
@@ -99,7 +105,7 @@ place_dot(B_coords);
 place_dot(C_coords);
 
 var old_coords = random_dot()
-for (var i = 0; i < 100=00; i++) {
+for (var i = 0; i < 1000; i++) {
   let random_vertex_coords = random_vertex()
   let new_coords = find_halfway_point(old_coords, random_vertex_coords)
   place_dot(new_coords);
