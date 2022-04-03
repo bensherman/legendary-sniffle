@@ -99,7 +99,7 @@ place_dot(B_coords);
 place_dot(C_coords);
 
 var old_coords = random_dot()
-for (var i = 0; i < 100000; i++) {
+for (var i = 0; i < 100=00; i++) {
   let random_vertex_coords = random_vertex()
   let new_coords = find_halfway_point(old_coords, random_vertex_coords)
   place_dot(new_coords);
