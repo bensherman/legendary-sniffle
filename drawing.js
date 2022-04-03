@@ -15,11 +15,14 @@ function setup() {
   canvas.width = width
   canvas.height = height
   var ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#000076";
+  ctx.fillRect(0, 0, width, height);
   ctx.beginPath();
   ctx.moveTo(Ax, Ay);
   ctx.lineTo(Bx, By);
   ctx.lineTo(Cx, Cy);
   ctx.closePath();
+  ctx.strokeStyle = "#00AAAA";
   ctx.stroke();
   return ctx;
 }
@@ -80,7 +83,6 @@ function random_dot() {
     random_x = Math.floor(Math.random() * width)
     random_y = Math.floor(Math.random() * height)
   }
-  place_dot([random_x, random_y]);
   return ([random_x, random_y]);
 }
 
@@ -105,7 +107,7 @@ place_dot(B_coords);
 place_dot(C_coords);
 
 var old_coords = random_dot()
-for (var i = 0; i < 1000; i++) {
+for (var i = 0; i < 20000; i++) {
   let random_vertex_coords = random_vertex()
   let new_coords = find_halfway_point(old_coords, random_vertex_coords)
   place_dot(new_coords);
